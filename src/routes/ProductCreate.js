@@ -1,10 +1,41 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const BASE_URL = 'http://localhost:8000/'
+
 export const ProductCreate = () => {
     const [name, setName] = useState('')
     const [price, setPrice] = useState('')
     const [quantity, setQuantity] = useState('')
+
+    const navigate = useNavigate()
+
+    const handleCreate = (event) => {
+        event?.preventDefault()
+
+        const json_string = JSON.stringify({name, price, quantity})
+
+        const requestOptions = {
+            method: 'POST',
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            }),
+            body: json_string
+        }
+
+        fetch(BASE_URL + 'product', requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw response
+            }
+        })
+        .then((data) => {
+            navigate('/')
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }
 
     return (
         <div className="new_product body">
@@ -32,7 +63,7 @@ export const ProductCreate = () => {
                 onChange={(event) => setQuantity(event.target.value)}
                 />
             </div>
-            <button className="button-4" onClick={null}>Create product</button>
+            <button className="button-4" onClick={handleCreate}>Create product</button>
         </div>
     )
 }

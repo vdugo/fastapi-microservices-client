@@ -24,6 +24,25 @@ export const Products = () => {
         })
     }, [])
 
+    const handleDelete = (event, id) => {
+        event?.preventDefault()
+
+        const requestOptions = {
+            method: 'DELETE',
+        }
+
+        fetch(BASE_URL + 'product/' + id, requestOptions)
+        .then((response) => {
+            if (response.ok) {
+                window.location.reload()
+            }
+            throw response
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }
+
     return (
         <div className="products_div body">
             <div className="products_title title">
@@ -48,7 +67,7 @@ export const Products = () => {
                                 <td className="products_table_td">{product.price}</td>
                                 <td className="products_table_td">{product.quantity}</td>
                                 <td className="products_table_td">
-                                    <a href="#" className="product_delete_link" onClick={null}>delete</a>
+                                    <a href="#" className="product_delete_link" onClick={(event) => handleDelete(event, product.id)}>delete</a>
                                 </td>
                             </tr>
                             )

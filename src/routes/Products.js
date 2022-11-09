@@ -30,7 +30,7 @@ export const Products = () => {
                 Products
             </div>
             <div className="products_add_div">
-                <Link to={'/'} className="product_add">Add</Link>
+                <Link to={'/create'} className="product_add">Add</Link>
                 <table className="products_table">
                     <thead className="products_table_head">
                         <th scope="col">#</th>

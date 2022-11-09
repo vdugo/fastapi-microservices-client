@@ -46,8 +46,8 @@ export const Products = () => {
                                 <td className="products_table_td">{product.id}</td>
                                 <td className="products_table_td">{product.name}</td>
                                 <td className="products_table_td">{product.price}</td>
-                                <td 
-                                    className="products_table_td">{product.quantity}
+                                <td className="products_table_td">{product.quantity}</td>
+                                <td className="products_table_td">
                                     <a href="#" className="product_delete_link" onClick={null}>delete</a>
                                 </td>
                             </tr>

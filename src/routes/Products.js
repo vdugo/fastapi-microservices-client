@@ -76,7 +76,7 @@ export const Products = () => {
                 </table>
             </div>
             <div className="products_order_div">
-                <Link to={'/'} className="products_order">Order</Link>
+                <Link to={'/order'} className="products_order">Order</Link>
             </div>
         </div>
     )
